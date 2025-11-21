@@ -17,7 +17,6 @@
 		<Item Name="Log Sinks.lvclass" Type="LVClass" URL="../Log Sinks/Log Sinks.lvclass"/>
 		<Item Name="Text File.lvclass" Type="LVClass" URL="../Log Sinks/Text File/Text File.lvclass"/>
 		<Item Name="Sink-Console.lvclass" Type="LVClass" URL="../Log Sinks/Sink-Console/Sink-Console.lvclass"/>
-		<Item Name="SQLite Database.lvclass" Type="LVClass" URL="../Log Sinks/SQLite Database/SQLite Database.lvclass"/>
 		<Item Name="Text File - Binary.lvclass" Type="LVClass" URL="../Log Sinks/Text File - Binary/Text File - Binary.lvclass"/>
 	</Item>
 	<Item Name="Layouts" Type="Folder">
@@ -25,11 +24,11 @@
 		<Item Name="SimpleLayout.lvclass" Type="LVClass" URL="../Layouts/SimpleLayout/SimpleLayout.lvclass"/>
 		<Item Name="CSVLayout.lvclass" Type="LVClass" URL="../Layouts/CSVLayout/CSVLayout.lvclass"/>
 		<Item Name="JSONLayout.lvclass" Type="LVClass" URL="../Layouts/JSONLayout/JSONLayout.lvclass"/>
-		<Item Name="DBLayout.lvclass" Type="LVClass" URL="../Layouts/DBLayout/DBLayout.lvclass"/>
 	</Item>
 	<Item Name="Encryption" Type="Folder">
 		<Item Name="Encryption.lvclass" Type="LVClass" URL="../Encryption/Encryption.lvclass"/>
 		<Item Name="FFT.lvclass" Type="LVClass" URL="../Encryption/FFT/FFT.lvclass"/>
+		<Item Name="FFT Encryption Class.ctl" Type="VI" URL="../Encryption/FFT Encryption Class.ctl"/>
 	</Item>
 	<Item Name="Log.lvclass" Type="LVClass" URL="../Log/Log.lvclass"/>
 	<Item Name="Log Data.ctl" Type="VI" URL="../Log Data.ctl"/>
