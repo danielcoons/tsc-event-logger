@@ -1,0 +1,4 @@
+== Project description
+
++++The TSC Event Logger provides a reusable way to log application events to a centralized log file following common log definitions.+++
+

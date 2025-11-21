@@ -1,0 +1,190 @@
+== Classes overview
+
+This project contains 11 classes and 0 interface.
+
+.Classes list
+[cols="", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Classes |Interfaces
+
+|<<Log Sinks.lvclass>>
+|
+
+|<<Text File.lvclass>>
+|
+
+|<<Sink-Console.lvclass>>
+|
+
+|<<Text File - Binary.lvclass>>
+|
+
+|<<Layout.lvclass>>
+|
+
+|<<SimpleLayout.lvclass>>
+|
+
+|<<CSVLayout.lvclass>>
+|
+
+|<<JSONLayout.lvclass>>
+|
+
+|<<Encryption.lvclass>>
+|
+
+|<<FFT.lvclass>>
+|
+
+|<<Log.lvclass>>
+|
+|===
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "TSC Event Logger.lvlib:Log Sinks" {
+{field} +Name : String
+{field} +Minimum Level : Enum U16
+{field} +queue ref : NoType
+{field} -Active? : Boolean
+{field} +Layout : LV Class
+{field} +Encryption : LV Class
+{static} {method} -Listener()
+{static} {method} #Convert Log Entry()
+{static} {method} #Delete Old Files()
+{static} {method} +Get File Info()
+{static} {method} +Windows SYSTEMTIME to String()
+{static} {method} +Launch Listener()
+{static} {method} +Quit()
+{static} {method} +Send Log Packet()
+{method} #Close()
+{method} #Common ini Keys()
+{method} #Write()
+
+}
+"TSC Event Logger.lvlib:Log Sinks" *-- "TSC Event Logger.lvlib:Layout"
+"TSC Event Logger.lvlib:Log Sinks" *-- "TSC Event Logger.lvlib:Encryption"
+
+
+class "TSC Event Logger.lvlib:Text File" {
+{field} +file : NoType
+{field} -name-format : String
+{field} -file extension : String
+{field} -location : Path
+{field} -Max File Size (MB) : Double Float
+{field} -N Day Buffer : U32
+{static} {method} #Cast to Child()
+{static} {method} #Check File Size()
+{static} {method} #New File()
+{static} {method} +Construct - File()
+{static} {method} +Construct - Input()
+{static} {method} +Construct()
+{method} #Close()
+{method} #Write()
+
+}
+"TSC Event Logger.lvlib:Log Sinks" <|-- "TSC Event Logger.lvlib:Text File"
+
+
+class "TSC Event Logger.lvlib:Sink-Console" {
+{field} +console : kLVObjString
+{field} -Control Index : I32
+{field} -Owning VI : kLVObjVI
+{field} -buffer length : I32
+{field} -items recorded : I32
+{field} -buffer queue : NoType
+{static} {method} -create buffer queue()
+{static} {method} +Construct - File()
+{static} {method} +Construct - Input()
+{static} {method} +Construct()
+{method} #Close()
+{method} #Write()
+
+}
+"TSC Event Logger.lvlib:Log Sinks" <|-- "TSC Event Logger.lvlib:Sink-Console"
+
+
+class "TSC Event Logger.lvlib:Text File - Binary" {
+{static} {method} +Construct - File (Binary)()
+{static} {method} +Construct - Input (Binary)()
+{static} {method} +Construct()
+{method} #Write()
+
+}
+"TSC Event Logger.lvlib:Text File" <|-- "TSC Event Logger.lvlib:Text File - Binary"
+
+
+class "TSC Event Logger.lvlib:Layout" {
+{static} {method} +Replace Arguments()
+{static} {method} +Time String Formatter()
+{method} +Format Entry()
+
+}
+
+
+class "TSC Event Logger.lvlib:SimpleLayout" {
+{method} +Format Entry()
+
+}
+"TSC Event Logger.lvlib:Layout" <|-- "TSC Event Logger.lvlib:SimpleLayout"
+
+
+class "TSC Event Logger.lvlib:CSVLayout" {
+{method} +Format Entry()
+
+}
+"TSC Event Logger.lvlib:Layout" <|-- "TSC Event Logger.lvlib:CSVLayout"
+
+
+class "TSC Event Logger.lvlib:JSONLayout" {
+{static} {method} +Format Arguments to JSON()
+{method} +Format Entry()
+
+}
+"TSC Event Logger.lvlib:Layout" <|-- "TSC Event Logger.lvlib:JSONLayout"
+
+
+class "TSC Event Logger.lvlib:Encryption" {
+{field} #SALT : String
+{field} +SALT location : U16
+{field} +Multiplier : Double Float
+{static} {method} +Create Encryption()
+{method} +Decrypt()
+{method} +Encrypt()
+
+}
+
+
+class "TSC Event Logger.lvlib:FFT" {
+{method} +Decrypt()
+{method} +Encrypt()
+
+}
+"TSC Event Logger.lvlib:Encryption" <|-- "TSC Event Logger.lvlib:FFT"
+
+
+class "TSC Event Logger.lvlib:Log" {
+{field} -Sink DVR Array : NoType
+{static} {method} +Add Sink()
+{static} {method} +Decrypt Message()
+{static} {method} +Define Encryption()
+{static} {method} +Log Entry.vim()
+{static} {method} +Remove Sink()
+{static} {method} +Start Logging()
+{static} {method} +Stop Logging()
+
+}
+
+
+
+@enduml
+....

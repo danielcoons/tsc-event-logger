@@ -1,0 +1,76 @@
+== TSC Event Logger.lvlib
+
+*Responsibility:*
++++The TSC Event Logger library provides its namespace to the member VIs that provide the logging capability with Object-Oriented Design.+++
+
+
+*Version:* 1.0.0.0
+
+.Nested libraries
+[cols="", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Type
+
+|<<Log Sinks.lvclass>>
+|LVClass
+
+|<<Text File.lvclass>>
+|LVClass
+
+|<<Sink-Console.lvclass>>
+|LVClass
+
+|<<Text File - Binary.lvclass>>
+|LVClass
+
+|<<Layout.lvclass>>
+|LVClass
+
+|<<SimpleLayout.lvclass>>
+|LVClass
+
+|<<CSVLayout.lvclass>>
+|LVClass
+
+|<<JSONLayout.lvclass>>
+|LVClass
+
+|<<Encryption.lvclass>>
+|LVClass
+
+|<<FFT.lvclass>>
+|LVClass
+
+|<<Log.lvclass>>
+|LVClass
+|===
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Connector pane |Description |S. |R. |I.
+
+|NoLogTypeDefined--error
+|image:TSC_Event_Logger.lvlib_NoLogTypeDefined__error.vi.png[TSC Event Logger.lvlib:NoLogTypeDefined--error.vi]
+|+++No log type defined error. +++
+
++++Code: -8000+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined

@@ -1,0 +1,397 @@
+== Log Sinks.lvclass
+
+*Responsibility:*
++++A Log "Sink" is the location where the log data will be written to. An application can have one or more sinks that will all written to during use.+++
+
+
+*Version:* 1.0.0.8
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "TSC Event Logger.lvlib:Log Sinks" {
+{field} +Name : String
+{field} +Minimum Level : Enum U16
+{field} +queue ref : NoType
+{field} -Active? : Boolean
+{field} +Layout : LV Class
+{field} +Encryption : LV Class
+{static} {method} -Listener()
+{static} {method} #Convert Log Entry()
+{static} {method} #Delete Old Files()
+{static} {method} +Get File Info()
+{static} {method} +Windows SYSTEMTIME to String()
+{static} {method} +Launch Listener()
+{static} {method} +Quit()
+{static} {method} +Send Log Packet()
+{method} #Close()
+{method} #Common ini Keys()
+{method} #Write()
+
+}
+"TSC Event Logger.lvlib:Log Sinks" *-- "TSC Event Logger.lvlib:Layout"
+"TSC Event Logger.lvlib:Log Sinks" *-- "TSC Event Logger.lvlib:Encryption"
+
+
+
+@enduml
+....
+
+.Functions
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Connector pane |Description |S. |R. |I.
+
+|Listener
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Listener.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Listener.vi]
+|+++A parallel sink loop that will be launched and housed as a location to receive logging packets. This is a private VI because it is not meant to be used outside the scope of the Log Sinks class.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-private.png[scope-private.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:empty.png[empty.png]
+
+|Close
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Close.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Close.vi]
+|+++Close the sink.+++
+
++++~protected method+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Common ini Keys
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Common_ini_Keys.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Common ini Keys.vi]
+|+++Read the ini keys that are common for the different sink types.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Convert Log Entry
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Convert_Log_Entry.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Convert Log Entry.vi]
+|+++format the log data entry according to the sink's layout type+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Delete Old Files
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Delete_Old_Files.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Delete Old Files.vi]
+|+++Delete older log files that are beyond the "N-day" Buffer defined by the application.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Read Layout
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Read_Layout.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Read Layout.vi]
+|+++Data Member Access method to read the sink's layout type+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Write
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Write.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Write.vi]
+|+++The write method when a log message is received for a sink.+++
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Get File Info
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Get_File_Info.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Get File Info.vi]
+|+++This VI takes in path to a file or directory and returns information about it. This information consists of the following:+++
+
++++<B>File Attributes</B> cluster consists of whether or not the file is read only, hidden, a system file, a directory, the archive property is set, encrypted, normal (no other properties are set), temporary, a sparse file, has a reparse point, compressed, or offline. +++
++++<B>Creation Time</B> is the time the file was first created.+++
++++<B>Last Access Time</B> is the time the file was last accessed (read or write.+++
++++<B>Last Write Time</B> is the time the file was last written to.+++
++++<B>File Size</B> is the size of the file in bytes. If the input path is a directory, this value has no meaning. (This number is a string because LabVIEW does not currently support 64-bit integers. For files less than 2^31 - 1 bytes, this can be converted back to an integer.+++
+
++++For more information on any of the attributes or times, see the following web page on MDSN (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/fileio/base/win32_file_attribute_data_str.asp)+++
+
++++Adapted from Ed Dickens:+++
++++https://forums.ni.com/t5/LabVIEW/file-date-created/m-p/109838/highlight/true?profile.language=en#M66474+++
+
++++The file times (Creation, Last Access, and Last Write) can also be output as strings that display the date and time in seconds since 12:00 a.m., January 1, 1904, Universal time, in a format you specify. If <B>Convert time to string?</B> is true, then <B>Time Format String</B> can contain any combination of the following codes and <B>String Times</B> will not be empty: %H (hour, 24-hour clock), %I (hour, 12-hour clock), %M (minute), %S (second), %p (a.m./p.m. flag), %d (day of month), %m (month number), %y (year within century), %Y (year including century), %a (abbreviated weekday name), %x (locale-specific date), %X (locale-specific time), %c (locale-specific date/time), %<digit>u (fractional seconds with <digit> precision). +++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Windows SYSTEMTIME to String
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Windows_SYSTEMTIME_to_String.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Windows SYSTEMTIME to String.vi]
+|+++This VI takes in a Windows SYSTEMTIME structure and displays the date and time in seconds since 12:00 a.m., January 1, 1904, Universal time, in a format you specify.+++
+
++++The SYSTEMTIME structure consists of:+++
++++<B>Year</B>+++
++++Specifies the current year.+++
++++<B>Month</B>+++
++++Specifies the current month; January = 1, February = 2, and so on.+++
++++<B>DayOfWeek</B>+++
++++Specifies the current day of the week; Sunday = 0, Monday = 1, and so on.+++
++++<B>Day</B>+++
++++Specifies the current day of the month.+++
++++<B>Hour</B>+++
++++Specifies the current hour.+++
++++<B>Minute</B>+++
++++Specifies the current minute.+++
++++<B>Second</B>+++
++++Specifies the current second.+++
++++<B>Milliseconds</B>+++
++++Specifies the current millisecond.+++
+
++++Adapted from Ed Dickens:+++
++++https://forums.ni.com/t5/LabVIEW/file-date-created/m-p/109838/highlight/true?profile.language=en#M66474+++
+
++++The <B>time format string</B> can contain any combination of the following codes: %H (hour, 24-hour clock), %I (hour, 12-hour clock), %M (minute), %S (second), %p (a.m./p.m. flag), %d (day of month), %m (month number), %y (year within century), %Y (year including century), %a (abbreviated weekday name), %x (locale-specific date), %X (locale-specific time), %c (locale-specific date/time), %<digit>u (fractional seconds with <digit> precision). +++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Read Encryption
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Read_Encryption.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Read Encryption.vi]
+|+++Data member access method to read the encryption type+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Write Encryption
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Write_Encryption.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Write Encryption.vi]
+|+++Data member access method to write the encryption type.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Launch Listener
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Launch_Listener.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Launch Listener.vi]
+|+++Launch a parallel instance of a listener for a new sink queue.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Quit
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Quit.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Quit.vi]
+|+++Close the queue reference of the log sink.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Read Name
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Read_Name.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Read Name.vi]
+|+++Data Member Access method to read the name of the sink.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Send Log Packet
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Send_Log_Packet.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Send Log Packet.vi]
+|+++encrypt the log data (if applicable) and send to the sink+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Write Active
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Write_Active.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Write Active.vi]
+|+++Write if the sink is currently active.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Write Layout
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Write_Layout.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Write Layout.vi]
+|+++Set the layout type for the sink.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Write Minimum Level
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Write_Minimum_Level.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Write Minimum Level.vi]
+|+++Write the minimum allowable level.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Write Name
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Write_Name.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Write Name.vi]
+|+++Write the sink name.+++
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Write queue ref
+|image:TSC_Event_Logger.lvlib_Log_Sinks.lvclass_Write_queue_ref.vi.png[TSC Event Logger.lvlib:Log Sinks.lvclass:Write queue ref.vi]
+|+++Keep track of the sink queue reference.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community | image:scope-private.png[] -> Private
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
