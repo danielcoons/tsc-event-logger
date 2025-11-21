@@ -1,0 +1,162 @@
+== Text File.lvclass
+
+*Responsibility:*
++++A text file output sink -> written as an ASCII output.+++
+
+
+*Version:* 1.0.0.4
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "TSC Event Logger.lvlib:Text File" {
+{field} +file : NoType
+{field} -name-format : String
+{field} -file extension : String
+{field} -location : Path
+{field} -Max File Size (MB) : Double Float
+{field} -N Day Buffer : U32
+{static} {method} #Cast to Child()
+{static} {method} #Check File Size()
+{static} {method} #New File()
+{static} {method} +Construct - File()
+{static} {method} +Construct - Input()
+{static} {method} +Construct()
+{method} #Close()
+{method} #Write()
+
+}
+"TSC Event Logger.lvlib:Log Sinks" <|-- "TSC Event Logger.lvlib:Text File"
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Connector pane |Description |S. |R. |I.
+
+|Cast to Child
+|image:TSC_Event_Logger.lvlib_Text_File.lvclass_Cast_to_Child.vi.png[TSC Event Logger.lvlib:Text File.lvclass:Cast to Child.vi]
+|+++Pass the parent data down to the child object directly in the casting.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Check File Size
+|image:TSC_Event_Logger.lvlib_Text_File.lvclass_Check_File_Size.vi.png[TSC Event Logger.lvlib:Text File.lvclass:Check File Size.vi]
+|+++Check if the file size is beyond the maximum allowable for the text file sink.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|New File
+|image:TSC_Event_Logger.lvlib_Text_File.lvclass_New_File.vi.png[TSC Event Logger.lvlib:Text File.lvclass:New File.vi]
+|+++Create a new log sink of text file type.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Close
+|image:TSC_Event_Logger.lvlib_Text_File.lvclass_Close.vi.png[TSC Event Logger.lvlib:Text File.lvclass:Close.vi]
+|No description found (add content in vi description)
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Construct - File
+|image:TSC_Event_Logger.lvlib_Text_File.lvclass_Construct___File.vi.png[TSC Event Logger.lvlib:Text File.lvclass:Construct - File.vi]
+|+++Constructor for the Text-File sink type when loading information from an ini file.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Construct - Input
+|image:TSC_Event_Logger.lvlib_Text_File.lvclass_Construct___Input.vi.png[TSC Event Logger.lvlib:Text File.lvclass:Construct - Input.vi]
+|+++Construct a text file sink via direct entry with an output of the sink.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Read file
+|image:TSC_Event_Logger.lvlib_Text_File.lvclass_Read_file.vi.png[TSC Event Logger.lvlib:Text File.lvclass:Read file.vi]
+|+++Data member access for the file reference.+++
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Write
+|image:TSC_Event_Logger.lvlib_Text_File.lvclass_Write.vi.png[TSC Event Logger.lvlib:Text File.lvclass:Write.vi]
+|No description found (add content in vi description)
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined

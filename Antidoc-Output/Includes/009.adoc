@@ -1,0 +1,47 @@
+== CSVLayout.lvclass
+
+*Responsibility:*
++++CSV Layout for the report event log data+++
+
+
+*Version:* 1.0.0.0
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "TSC Event Logger.lvlib:CSVLayout" {
+{method} +Format Entry()
+
+}
+"TSC Event Logger.lvlib:Layout" <|-- "TSC Event Logger.lvlib:CSVLayout"
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Connector pane |Description |S. |R. |I.
+
+|Format Entry
+|image:TSC_Event_Logger.lvlib_CSVLayout.lvclass_Format_Entry.vi.png[TSC Event Logger.lvlib:CSVLayout.lvclass:Format Entry.vi]
+|No description found (add content in vi description)
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined

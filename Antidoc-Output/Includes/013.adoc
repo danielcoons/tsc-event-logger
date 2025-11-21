@@ -1,0 +1,185 @@
+== Log.lvclass
+
+*Responsibility:*
++++The Log class that will track encryption for logs, the current log "sinks", and the start/stop logging actions.+++
+
++++Also contains the main: Log Entry.vim method which is what developers will primarily use to log event data.+++
+
+
+*Version:* 1.0.0.12
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "TSC Event Logger.lvlib:Log" {
+{field} -Sink DVR Array : NoType
+{static} {method} +Add Sink()
+{static} {method} +Decrypt Message()
+{static} {method} +Define Encryption()
+{static} {method} +Log Entry.vim()
+{static} {method} +Remove Sink()
+{static} {method} +Start Logging()
+{static} {method} +Stop Logging()
+
+}
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Connector pane |Description |S. |R. |I.
+
+|Add Sink
+|image:TSC_Event_Logger.lvlib_Log.lvclass_Add_Sink.vi.png[TSC Event Logger.lvlib:Log.lvclass:Add Sink.vi]
+|+++Add a new sink to the list of Log Sinks+++
+
++++-If include encryption is checked, it will apply the encryption from the first found non-default encryption method+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Decrypt Message
+|image:TSC_Event_Logger.lvlib_Log.lvclass_Decrypt_Message.vi.png[TSC Event Logger.lvlib:Log.lvclass:Decrypt Message.vi]
+|+++Decrypt the log data.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Define Encryption
+|image:TSC_Event_Logger.lvlib_Log.lvclass_Define_Encryption.vi.png[TSC Event Logger.lvlib:Log.lvclass:Define Encryption.vi]
+|+++Define an encryption method for the project.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Log Entry
+|image:TSC_Event_Logger.lvlib_Log.lvclass_Log_Entry.vim.png[TSC Event Logger.lvlib:Log.lvclass:Log Entry.vim]
+|+++This VI will send a log packet to the current log sinks configured for the application+++
+
++++The inputs are:+++
++++-Time: timestamp for when event occurred (if left blank, then it will use current time when called)+++
++++-Level: the log level to be applied+++
++++-Logger: the source of the event+++
++++-Message: the unformatted message for the event with {}'s surrounding any argument values+++
++++-Arguments: the arguments to apply to the message+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Read Sinks
+|image:TSC_Event_Logger.lvlib_Log.lvclass_Read_Sinks.vi.png[TSC Event Logger.lvlib:Log.lvclass:Read Sinks.vi]
+|+++Data Member Access VI that reads the list of active log sinks.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Remove Sink
+|image:TSC_Event_Logger.lvlib_Log.lvclass_Remove_Sink.vi.png[TSC Event Logger.lvlib:Log.lvclass:Remove Sink.vi]
+|+++Remove the named sink from the list.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Start Logging
+|image:TSC_Event_Logger.lvlib_Log.lvclass_Start_Logging.vi.png[TSC Event Logger.lvlib:Log.lvclass:Start Logging.vi]
+|+++Start logging events.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Stop Logging
+|image:TSC_Event_Logger.lvlib_Log.lvclass_Stop_Logging.vi.png[TSC Event Logger.lvlib:Log.lvclass:Stop Logging.vi]
+|+++Stop the event logging actions.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined

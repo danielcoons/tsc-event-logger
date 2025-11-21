@@ -1,0 +1,129 @@
+== Sink-Console.lvclass
+
+*Responsibility:*
++++A console display sink type.+++
+
+
+*Version:* 1.0.0.8
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "TSC Event Logger.lvlib:Sink-Console" {
+{field} +console : kLVObjString
+{field} -Control Index : I32
+{field} -Owning VI : kLVObjVI
+{field} -buffer length : I32
+{field} -items recorded : I32
+{field} -buffer queue : NoType
+{static} {method} -create buffer queue()
+{static} {method} +Construct - File()
+{static} {method} +Construct - Input()
+{static} {method} +Construct()
+{method} #Close()
+{method} #Write()
+
+}
+"TSC Event Logger.lvlib:Log Sinks" <|-- "TSC Event Logger.lvlib:Sink-Console"
+
+
+
+@enduml
+....
+
+.Functions
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Connector pane |Description |S. |R. |I.
+
+|create buffer queue
+|image:TSC_Event_Logger.lvlib_Sink_Console.lvclass_create_buffer_queue.vi.png[TSC Event Logger.lvlib:Sink-Console.lvclass:create buffer queue.vi]
+|+++create a buffer queue for the console sink.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-private.png[scope-private.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Write console
+|image:TSC_Event_Logger.lvlib_Sink_Console.lvclass_Write_console.vi.png[TSC Event Logger.lvlib:Sink-Console.lvclass:Write console.vi]
+|+++The console is a string control - write the reference to the console to the object.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Close
+|image:TSC_Event_Logger.lvlib_Sink_Console.lvclass_Close.vi.png[TSC Event Logger.lvlib:Sink-Console.lvclass:Close.vi]
+|No description found (add content in vi description)
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Construct - File
+|image:TSC_Event_Logger.lvlib_Sink_Console.lvclass_Construct___File.vi.png[TSC Event Logger.lvlib:Sink-Console.lvclass:Construct - File.vi]
+|+++Create the sink for a console from ini file loading.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Construct - Input
+|image:TSC_Event_Logger.lvlib_Sink_Console.lvclass_Construct___Input.vi.png[TSC Event Logger.lvlib:Sink-Console.lvclass:Construct - Input.vi]
+|+++Construct the console sink type via direct VI entry.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Write
+|image:TSC_Event_Logger.lvlib_Sink_Console.lvclass_Write.vi.png[TSC Event Logger.lvlib:Sink-Console.lvclass:Write.vi]
+|No description found (add content in vi description)
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community | image:scope-private.png[] -> Private
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
