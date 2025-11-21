@@ -1,0 +1,146 @@
+== Encryption.lvclass
+
+*Responsibility:*
++++The Encryption Class defines the necessary data to encrypt specific arguments in the output to a log file so that it cannot be locally modified.+++
+
+
+*Version:* 1.0.0.4
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "TSC Event Logger.lvlib:Encryption" {
+{field} #SALT : String
+{field} +SALT location : U16
+{field} +Multiplier : Double Float
+{static} {method} +Create Encryption()
+{method} +Decrypt()
+{method} +Encrypt()
+
+}
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Connector pane |Description |S. |R. |I.
+
+|Read Multiplier
+|image:TSC_Event_Logger.lvlib_Encryption.lvclass_Read_Multiplier.vi.png[TSC Event Logger.lvlib:Encryption.lvclass:Read Multiplier.vi]
+|+++Data Member Access method to read the multiplier on the object.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Read SALT
+|image:TSC_Event_Logger.lvlib_Encryption.lvclass_Read_SALT.vi.png[TSC Event Logger.lvlib:Encryption.lvclass:Read SALT.vi]
+|+++Data Member Access method to read the salt on the object.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Read SALT location
+|image:TSC_Event_Logger.lvlib_Encryption.lvclass_Read_SALT_location.vi.png[TSC Event Logger.lvlib:Encryption.lvclass:Read SALT location.vi]
+|+++Data Member Access method to read the salt location on the object.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:reentrancy-preallocated.png[reentrancy-preallocated.png]
+|image:inlined.png[inlined.png]
+
+|Create Encryption
+|image:TSC_Event_Logger.lvlib_Encryption.lvclass_Create_Encryption.vi.png[TSC Event Logger.lvlib:Encryption.lvclass:Create Encryption.vi]
+|+++Create the encryption object.+++
+
++++Define the:+++
+
++++SALT: string that specific and hardcoded into software so that it is not readable in the output EXE+++
++++SALT location: where the SALT will be placed+++
++++Multiplier: the value that will be used as a digit multiplier if used+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Decrypt
+|image:TSC_Event_Logger.lvlib_Encryption.lvclass_Decrypt.vi.png[TSC Event Logger.lvlib:Encryption.lvclass:Decrypt.vi]
+|+++The decrypt method will taken an encrypted message in and return a decrypted string output.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Encrypt
+|image:TSC_Event_Logger.lvlib_Encryption.lvclass_Encrypt.vi.png[TSC Event Logger.lvlib:Encryption.lvclass:Encrypt.vi]
+|+++Encrypt the list of arguments that need to be "obfuscated" for the actual recording of the data. Will return an array of the encrypted arguments as outputs.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined

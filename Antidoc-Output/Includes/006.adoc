@@ -1,0 +1,91 @@
+== Text File - Binary.lvclass
+
+*Responsibility:*
++++A LabVIEW binary type event log sink. Will not be human-readable, but will store all the data.+++
+
+
+*Version:* 1.0.0.1
+
+[plantuml, format="svg", align="center"]
+....
+@startuml
+set namespaceSeparator :
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassBorderColor #555555
+skinparam ClassFontColor #000000
+skinparam ClassHeaderBackgroundColor #808080
+
+skinparam top to bottom direction
+class "TSC Event Logger.lvlib:Text File - Binary" {
+{static} {method} +Construct - File (Binary)()
+{static} {method} +Construct - Input (Binary)()
+{static} {method} +Construct()
+{method} #Write()
+
+}
+"TSC Event Logger.lvlib:Text File" <|-- "TSC Event Logger.lvlib:Text File - Binary"
+
+
+
+@enduml
+....
+
+.Functions (non private scope only)
+[cols="<.<4d,<.<8a,<.<12d,<.<1a,<.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Connector pane |Description |S. |R. |I.
+
+|Construct - File (Binary)
+|image:TSC_Event_Logger.lvlib_Text_File___Binary.lvclass_Construct___File_(Binary).vi.png[TSC Event Logger.lvlib:Text File - Binary.lvclass:Construct - File (Binary).vi]
+|+++Constructor for a binary file type - from read of common ini format.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Construct - Input (Binary)
+|image:TSC_Event_Logger.lvlib_Text_File___Binary.lvclass_Construct___Input_(Binary).vi.png[TSC Event Logger.lvlib:Text File - Binary.lvclass:Construct - Input (Binary).vi]
+|+++Construct the binary file output type from direct VI entry.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+
+|Write
+|image:TSC_Event_Logger.lvlib_Text_File___Binary.lvclass_Write.vi.png[TSC Event Logger.lvlib:Text File - Binary.lvclass:Write.vi]
+|+++Polymorphic, selectable constructor for making a binary event log sink type.+++
+
++++<b>Code Developed By:</b>+++
++++Technology Service Corporation+++
++++Bloomington, IN 47403+++
++++www.tsc.com/atcs+++
+
++++Developer:+++
++++Daniel Coons+++
+
+|image:scope-protected.png[scope-protected.png]
+|image:empty.png[empty.png]
+|image:empty.png[empty.png]
+|===
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
