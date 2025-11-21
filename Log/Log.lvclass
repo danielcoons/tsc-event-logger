@@ -26,7 +26,7 @@ Also contains the main: Log Entry.vim method which is what developers will prima
 
 </Property>
 	<Item Name="Friends List" Type="Friends List">
-		<Item Name="Test-File IO.lvclass" Type="Friended Library" URL="../../_Unit Tests/Test-File IO/Test-File IO.lvclass"/>
+		<Item Name="Test Max File Size.lvclass" Type="Friended Library" URL="../../_Unit Test/Test Max File Size/Test Max File Size.lvclass"/>
 	</Item>
 	<Item Name="Log.ctl" Type="Class Private Data" URL="Log.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>

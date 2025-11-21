@@ -14,6 +14,9 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="_Unit Test" Type="Folder">
+			<Item Name="_Unit Test (TSC Event Logger).lvproj" Type="Document" URL="../_Unit Test/_Unit Test (TSC Event Logger).lvproj"/>
+		</Item>
 		<Item Name="Example" Type="Folder">
 			<Item Name="Branched Log Example.vi" Type="VI" URL="../Example/Branched Log Example.vi"/>
 			<Item Name="Simple Example (with Encryption).vi" Type="VI" URL="../Example/Simple Example (with Encryption).vi"/>
@@ -54,6 +57,7 @@
 				<Item Name="LV70DateRecToTimeStamp.vi" Type="VI" URL="/&lt;vilib&gt;/_oldvers/_oldvers.llb/LV70DateRecToTimeStamp.vi"/>
 				<Item Name="NI_AALPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/NI_AALPro.lvlib"/>
 				<Item Name="Search and Replace Pattern.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Search and Replace Pattern.vi"/>
+				<Item Name="Trim Whitespace One-Sided.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Trim Whitespace One-Sided.vi"/>
 			</Item>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>

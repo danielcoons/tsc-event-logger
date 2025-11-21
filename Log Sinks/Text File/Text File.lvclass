@@ -22,8 +22,8 @@
 
 </Property>
 	<Item Name="Friends List" Type="Friends List">
-		<Item Name="Test-File IO.lvclass" Type="Friended Library" URL="../../../_Unit Tests/Test-File IO/Test-File IO.lvclass"/>
 		<Item Name="TSC Event Logger.lvlib:Text File - Binary.lvclass" Type="Friended Library" URL="../../Text File - Binary/Text File - Binary.lvclass"/>
+		<Item Name="Test Max File Size.lvclass" Type="Friended Library" URL="../../../_Unit Test/Test Max File Size/Test Max File Size.lvclass"/>
 	</Item>
 	<Item Name="Text File.ctl" Type="Class Private Data" URL="Text File.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
